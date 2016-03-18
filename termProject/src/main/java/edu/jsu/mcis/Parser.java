@@ -74,6 +74,7 @@ public class Parser{
 	public void parseValues(String[] args){
 		int count = 0;
 		List<String> newArgsList = new ArrayList<String>(Arrays.asList(args));
+		//List<String> newOptionalArgsList = new ArrayList<String>();
 		
 		for(int i = 0; i < args.length; i++){
 			int k = 0;
@@ -180,6 +181,18 @@ public class Parser{
 				throw new WrongTypeException(argumentList.get(i).getValue(), dataTypeToString(argumentList.get(i)), programName, argList, argumentList.get(i).getName());
 			}
 		}
+		
+		for(int i = 0; i < optionalArgumentsList.size(); i++){
+			String argList = "";
+			if (!checkOptionalDataType(optionalArgumentsList.get(i).getName())){
+				for(int j = 0; j < optionalArgumentsList.size(); j++){
+					String temp = optionalArgumentsList.get(j).getName();
+					argList += temp + " ";
+				}
+				throw new WrongTypeException(optionalArgumentsList.get(i).getValue(), dataTypeToString(optionalArgumentsList.get(i)), programName, argList, optionalArgumentsList.get(i).getName());
+			}
+			
+		}
 
 	}
 	
@@ -234,6 +247,49 @@ public class Parser{
 				else if(argType.equals(Argument.dataType.FLOAT)){
 					try{
 						tempFloat = Float.parseFloat(argumentList.get(i).getValue());
+					} catch(NumberFormatException ex){
+						return false;
+					}
+					return true;
+				}
+				
+				else if(argType.equals(Argument.dataType.STRING)){
+					return true;
+				}
+				
+				else 
+					return false;
+				
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkOptionalDataType(String arg){
+		for(int i = 0; i < optionalArgumentsList.size(); i++){
+			if(optionalArgumentsList.get(i).getName().equals(arg)){
+				Argument.dataType argType = optionalArgumentsList.get(i).getDataType();
+				int tempInt;
+				float tempFloat;
+				if(argType.equals(Argument.dataType.BOOLEAN)){
+					if(optionalArgumentsList.get(i).getValue().equals("true") || optionalArgumentsList.get(i).getValue().equals("false"))
+						return true;
+					else 
+						return false;
+				}
+				
+				else if(argType.equals(Argument.dataType.INT)){
+					try{
+						tempInt = Integer.parseInt(optionalArgumentsList.get(i).getValue());
+					} catch(NumberFormatException ex){
+						return false;
+					}
+					return true;
+				}
+				
+				else if(argType.equals(Argument.dataType.FLOAT)){
+					try{
+						tempFloat = Float.parseFloat(optionalArgumentsList.get(i).getValue());
 					} catch(NumberFormatException ex){
 						return false;
 					}
