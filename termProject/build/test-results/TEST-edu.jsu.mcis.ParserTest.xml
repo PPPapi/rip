@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ParserTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2016-03-18T14:51:20" hostname="AH259-790-03" time="0.0">
+<testsuite name="edu.jsu.mcis.ParserTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2016-03-18T16:30:40" hostname="AH259-790-03" time="0.031">
   <properties/>
   <testcase name="testForTooManyArgumentsException" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
   <testcase name="testIfMultipleValuesAreParsed" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
@@ -9,11 +9,12 @@
   <testcase name="testIfMultipleArgumentsAreParsed" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
   <testcase name="testForWrongTypeExceptionWithInt" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
   <testcase name="testIfRightTypeIsParsed" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
-  <testcase name="acceptanceTestFive" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
+  <testcase name="acceptanceTestFive" classname="edu.jsu.mcis.ParserTest" time="0.016"/>
   <testcase name="testForWrongTypeExceptionWithBoolean" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
   <testcase name="testIfValueIsParsedCorrectly" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
+  <testcase name="testForWrongTypeThrownForOptionalArguments" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
   <testcase name="testThatUserArgumentIsAdded" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
-  <testcase name="acceptanceTestOne" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
+  <testcase name="acceptanceTestOne" classname="edu.jsu.mcis.ParserTest" time="0.015"/>
   <testcase name="acceptanceTestSix" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
   <testcase name="testIfArgumentNameIsParsed" classname="edu.jsu.mcis.ParserTest" time="0.0"/>
   <testcase name="testForWrongTypeExceptionWithFloat" classname="edu.jsu.mcis.ParserTest" time="0.0"/>

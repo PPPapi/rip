@@ -57,6 +57,17 @@ public class ParserTest{
 		p.parseValues(values);
 	}
 	
+	@Test(expected = WrongTypeException.class)
+	public void testForWrongTypeThrownForOptionalArguments(){
+		String[] names = {"length", "width", "height"};
+		String[] type = {"type", "box"};
+		String[] values = {"--type", "ellipsoid", "7", "3", "2"};
+		p.addArguments(names);
+		p.addOptionalArgument(type);
+		p.setOptionalArgumentType("type", Argument.dataType.INT);
+		p.parseValues(values);
+	}
+	
 	@Test
 	public void acceptanceTestFive(){
 		String[] names = {"length", "width", "height"};

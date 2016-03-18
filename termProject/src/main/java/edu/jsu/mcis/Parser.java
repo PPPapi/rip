@@ -66,15 +66,11 @@ public class Parser{
 		optionalArgumentsList.get(index).setShortForm(shortForm);
 	}
 	
-	public String shortForm(String arg){
-		int index = getIndex(arg);
-		return optionalArgumentsList.get(index).getShortForm();
-	}
 	
 	public void parseValues(String[] args){
 		int count = 0;
 		List<String> newArgsList = new ArrayList<String>(Arrays.asList(args));
-		//List<String> newOptionalArgsList = new ArrayList<String>();
+		
 		
 		for(int i = 0; i < args.length; i++){
 			int k = 0;
@@ -82,7 +78,7 @@ public class Parser{
 				count++;
 				newArgsList.remove(args[i]);
 				String argument = args[i].replace("-", "");
-				if(args[i].length() >= 2 && args[i].charAt(1) != '-'){
+				if(args[i].length() > 2 && args[i].charAt(1) != '-'){
 					String[] charArray = argument.split("(?!^)");
 					for(int j = 0; j < charArray.length; j++){
 						k = getIndex(charArray[j]);
@@ -109,23 +105,11 @@ public class Parser{
 			}
 		}
 		
-		if(getOptionalValue("help").equals("true")){
-			int k = getIndex("help");
-			throw new HelpException(programName, optionalArgumentsList.get(k).getMessage());
+		for(int i = 0; i < optionalArgumentsList.size(); i++){
+			if(optionalArgumentsList.get(i).getName().equals("help"))
+				if(optionalArgumentsList.get(i).getValue() == "true")
+					throw new HelpException(programName, optionalArgumentsList.get(i).getMessage());
 		}
-			
-		/*for(int i = 0; i < optionalArgumentsList.size(); i++){
-			if(optionalArgumentsList.get(i).getDataType() ==  Argument.dataType.BOOLEAN)
-				if(optionalArgumentsList.get(i).getValue() == "true")
-					throw new HelpException(programName, optionalArgumentsList.get(i).getMessage());
-		}*/
-		
-		
-		/*for(int i = 0; i < optionalArgumentsList.size(); i++){
-			if(optionalArgumentsList.get(i).getDataType() ==  Argument.dataType.BOOLEAN)
-				if(optionalArgumentsList.get(i).getValue() == "true")
-					throw new HelpException(programName, optionalArgumentsList.get(i).getMessage());
-		}*/
 		
 		for (int i = 0; i < args.length; i++) {
 			int countOfMatches = 0;
